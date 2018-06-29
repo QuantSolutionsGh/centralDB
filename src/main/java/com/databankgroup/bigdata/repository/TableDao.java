@@ -37,7 +37,8 @@ public class TableDao implements TableRepository {
     public List<Table> searchForClient(String searchString) {
         TableRowMapper mapper = new TableRowMapper();
 
-        String sql="select milesclientcode,bcclientcode,fullname,planid,mobile,address from " +
+        String sql="select milesclientcode,bcclientcode," +
+                "COALESCE(NULLIF(fullname,''), client_name, fullname) full_name,planid,mobile,address from " +
                 "deNORMALIZED "+searchString;
 
         List<Table> custList = new ArrayList<Table>();
@@ -47,7 +48,7 @@ public class TableDao implements TableRepository {
             Table tb = new Table();
             tb.setAddress((String)row.get("address"));
             tb.setPlanID((String)row.get("planid"));
-            tb.setNameInMiles((String)row.get("fullname"));
+            tb.setNameInMiles((String)row.get("full_name"));
             tb.setMobile((String)row.get("mobile"));
             tb.setMilesAccountNumber((String)row.get("milesclientcode"));
             tb.setBackconnectAccountNumber((String)row.get("bcclientcode"));
@@ -57,8 +58,17 @@ public class TableDao implements TableRepository {
 
 
 
+    }
 
 
-
+    @Override
+    public List<String> getAllProducts() {
+        String sql = "select distinct planid from NORMALIZED";
+        List<String>productList = new ArrayList<>();
+        List<Map<String,Object>>rows = this.jdbcTemplate.queryForList(sql);
+        for (Map row : rows){
+            productList.add((String)row.get("planid"));
+        }
+        return productList;
     }
 }

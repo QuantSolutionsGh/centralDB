@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:fragment="header-stuff">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+        <link th:href="@{/webjars/materializecss/0.100.1/css/materialize.min.css}" rel="stylesheet"/>
+
+        <link th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet"/>
+
+
+        <script th:src="@{/webjars/jquery/1.9.1/jquery.min.js}"></script>
+
+        <script th:src="@{/webjars/materializecss/0.100.1/js/materialize.min.js}"></script>
+
+
+        <title>Eagles Eye</title>
+
+
+    </div>
+</head>
+<body>
+<div th:fragment="header">
+
+
+
+    <nav class="orange">
+        <div class="nav-wrapper">
+            <!--a href="#!" class="brand-logo">Logo</a>  -->
+            <ul class="left ">
+                <li><a th:href="@{/}" >Client Search</a></li>
+                <li><a th:href="@{/customquery}">Custom Query</a></li>
+             </ul>
+        </div>
+    </nav>
+
+
+</div>
+
+</body>
+</html>

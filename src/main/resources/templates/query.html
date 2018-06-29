@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <div th:replace="fragments/header :: header-stuff"/>
+</head>
+<body>
+<div th:replace="fragments/header :: header"/>
+
+<div class="container" >
+
+    <h5 class="header">Custom Query</h5>
+
+    <br/>
+
+    <!--/*@thymesVar id="searchParameters" type="com.databankgroup.bigdata.model.SearchParameters"*/-->
+    <form method="post" action="#"   th:action="@{/customquery}" >
+
+
+
+    <h5 style="color:green">Products To Include:</h5>
+
+    <div class="row">
+
+    <div class="input-field s12 col m12">
+        <select id="select1" multiple th:field="*{customQueryParam.includeItems}">
+            <option value="" disabled selected>Choose your option</option>
+
+            <option th:each="element,row : ${productList}"
+                    th:value="${element}"
+                    th:text="${element}"></option>
+        </select>
+        <label>Products</label>
+    </div>
+    </div>
+    <h5 style="color:red">Products To Exclude:</h5>
+
+    <div class="row">
+
+        <div class="input-field s12 col m12">
+            <select id="select2" multiple th:field="*{customQueryParam.excludeItems}">
+                <option value="" disabled selected>Choose your option</option>
+
+                <option th:each="element,row : ${productList}"
+                        th:value="${element}"
+                        th:text="${element}"></option>
+            </select>
+            <label>Products</label>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <br/>
+
+        <button class="col m2 s12 btn  green waves-effect waves-light"
+                type="submit" name="_eventId_next">DOWNLOAD REPORT
+        </button>
+
+    </div>
+
+    </form>
+
+
+
+
+</div>
+
+
+
+</body>
+<script>
+    $(document).ready(function(){
+        $('select').material_select();})
+</script>
+
+</html>

@@ -13,6 +13,10 @@ public interface TableRepository {
 
     List<Table> searchForClient(String searchString);
 
+
+
+    List<String> getAllProducts();
+
     default ArrayList<Table> searchByIntegraAccNo(String searchString) {
         return null;
     }

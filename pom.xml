@@ -6,7 +6,7 @@
 	<groupId>com.databankgroup</groupId>
 	<artifactId>bigdata</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>bigdata</name>
 	<description>Project to merge Backconnect and Integra Systems</description>
@@ -45,11 +45,11 @@
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
 		</dependency>
-		<dependency>
+		<!--dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<!--scope>provided</scope> -->
-		</dependency>
+			<scope>provided</scope>
+		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -129,6 +129,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>centralDB</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
